@@ -1,2 +1,4 @@
 ru:
-  hello: "Привет"
+  page_title:
+    main_page:
+      index: Главная
