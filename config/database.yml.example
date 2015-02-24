@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
+  database: postman_development
+
+test:
+  <<: *default
+  database: postman_test
+
+production:
+  <<: *default
+  database: postman_production
+  username: username
+  password: password
