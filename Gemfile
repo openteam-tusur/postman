@@ -1,4 +1,4 @@
-Isource 'https://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
 gem 'auth_redis_user_connector', :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
