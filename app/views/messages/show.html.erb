@@ -6,7 +6,8 @@
 </div>
 
 <div class="message_contacts">
-  <% ['good', 'bad', 'unknown'].each do |status| %>
-    <%= render :partial => 'contacts/list', :locals => {:contacts => @message.contacts.send(status), :status => status} %>
+  <% Contact.status.values.each do |status| %>
+    <% contacts = @message.contacts.send(status) %>
+    <%= render :partial => 'contacts/list', :locals => {:contacts => contacts, :status => status} if contacts.any? %>
   <% end %>
 </div>
