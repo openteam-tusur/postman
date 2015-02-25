@@ -1,9 +1,9 @@
 class MessageMailer < CommonMailer
-  def send_email(message, sender, recipient)
-    @message   = message
+  def send_email(subject, body, recipient)
+    @subject   = subject
+    @body      = body
     @recipient = recipient
-    @sender    = sender
 
-    mail(:from => sender.email, :to => recipient.email, :subject => message.subject)
+    mail(:from => 'fake@fake.fake', :to => recipient, :subject => subject)
   end
 end
