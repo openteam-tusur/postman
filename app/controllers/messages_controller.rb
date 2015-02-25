@@ -1,6 +1,8 @@
+require 'message_searcher'
+
 class MessagesController < ApplicationController
   def index
-    @messages = Message.ordered
+    @messages = MessageSearcher.new(params).results
   end
 
   def show
