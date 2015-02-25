@@ -3,6 +3,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
   navigation.items do |primary|
     primary.item :main_page, I18n.t("page_title.main_page.index"), root_path
+    primary.item :messages,  I18n.t("page_title.messages.index"),  messages_path
   end
 end
 

@@ -3,6 +3,9 @@ ru:
     main_page:
       index: Главная
 
+    messages:
+      index: Список сообщений
+
   contact:
     status:
       good: Хороший
