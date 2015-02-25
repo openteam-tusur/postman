@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'auth_client',                     :git => 'https://github.com/openteam-tusur/auth_client'
-gem 'auth_redis_user_connector',       :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
-gem 'coffee-rails',                    '~> 4.1.0'
+gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
+gem 'auth_redis_user_connector', :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'enumerize'
 gem 'gravtastic'
 gem 'jquery-rails'
 gem 'openteam-commons'
