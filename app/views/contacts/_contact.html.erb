@@ -1,0 +1,6 @@
+<li>
+  <%= contact.value %>
+  <% if contact.good? || contact.unknown? %>
+    <span class='message_status'><%= @message.delivery_status_text_for(contact) %></span>
+  <% end %>
+</li>

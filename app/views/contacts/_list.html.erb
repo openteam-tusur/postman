@@ -1,0 +1,8 @@
+<div class="contacts <%= status %> list">
+  <h4><%= I18n.t("contact.status.#{status}") %></h4>
+  <ul>
+    <% contacts.each do |contact| %>
+      <%= render :partial => 'contacts/contact', :locals => {:contact => contact} %>
+    <% end %>
+  </ul>
+</div>

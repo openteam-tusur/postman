@@ -1,0 +1,12 @@
+<div class='message'>
+  <h3><%= @message.subject %></h3>
+  <div class="message_body">
+    <%= @message.body %>
+  </div>
+</div>
+
+<div class="message_contacts">
+  <% ['good', 'bad', 'unknown'].each do |status| %>
+    <%= render :partial => 'contacts/list', :locals => {:contacts => @message.contacts.send(status), :status => status} %>
+  <% end %>
+</div>

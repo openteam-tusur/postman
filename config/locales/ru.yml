@@ -2,3 +2,22 @@ ru:
   page_title:
     main_page:
       index: Главная
+
+  contact:
+    status:
+      good: Хороший
+      bad: Плохой
+      unknown: Неизвестный
+
+  enumerize:
+    contact:
+      status:
+        good: Хороший
+        bad: Плохой
+        unknown: Неизвестный
+
+    contact_message:
+      status:
+        sended: Отправлено
+        delivered: Доставлено
+        undelivered: Не доставлено
