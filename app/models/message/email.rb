@@ -1,4 +1,4 @@
-class Message::Mail < Message
+class Message::Email < Message
   validates_presence_of :body
 
   def send_to(recipients)
