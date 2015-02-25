@@ -1,4 +1,7 @@
 ru:
+  empty:
+    messages: Ничего не найдено
+
   page_title:
     main_page:
       index: Главная

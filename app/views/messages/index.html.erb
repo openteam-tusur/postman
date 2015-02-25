@@ -10,8 +10,15 @@
 </div>
 
 <div class="messages list">
-  <ul>
-    <%= render @messages %>
-  </ul>
-  <%= paginate @messages %>
+  <% if @messages.any? %>
+    <ul>
+      <%= render @messages %>
+    </ul>
+
+    <%= paginate @messages %>
+  <% else %>
+    <div class="empty">
+      <%= I18n.t("empty.#{controller_name}") %>
+    </div>
+  <% end %>
 </div>
