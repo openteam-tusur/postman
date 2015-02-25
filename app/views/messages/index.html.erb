@@ -12,7 +12,11 @@
 <div class="messages list">
   <% if @messages.any? %>
     <ul>
-      <%= render @messages %>
+      <% @messages.each do |message| %>
+        <li>
+          <%= link_to message.subject, message_path(message) %>
+        </li>
+      <% end %>
     </ul>
 
     <%= paginate @messages %>
