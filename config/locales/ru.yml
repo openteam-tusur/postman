@@ -24,6 +24,8 @@ ru:
 
     contact_message:
       status:
-        sended: Отправлено
-        delivered: Доставлено
-        undelivered: Не доставлено
+        initialized: Создано
+        sended:      Отправлено
+        received:    Принято
+        delivered:   Доставлено
+        failed:      Не доставлено
