@@ -4,6 +4,8 @@ class Message < ActiveRecord::Base
 
   scope :ordered, -> { order('created_at') }
 
+  normalize_attributes :subject, :body
+
   searchable do
     text :subject
     text :contacts, :using => :contacts_values

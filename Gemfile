@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :default do
+  gem 'attribute_normalizer'
   gem 'auth_client',                            :git => 'https://github.com/openteam-tusur/auth_client'
   gem 'auth_redis_user_connector',              :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
   gem 'coffee-rails',               '~> 4.1.0'
@@ -21,6 +22,7 @@ group :default do
   gem 'sunspot_rails',              '~> 2.1.1'
   gem 'tusur_header'
   gem 'uglifier',                   '>= 1.3.0'
+  gem 'validates_email_format_of'
 end
 
 group :development do
