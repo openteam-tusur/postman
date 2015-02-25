@@ -55,6 +55,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     airbrake (4.1.0)
       builder
       multi_json
@@ -62,6 +63,8 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
     chronic (0.10.2)
     chunky_png (1.3.4)
     coffee-rails (4.1.0)
@@ -90,6 +93,9 @@ GEM
     configliere (0.4.22)
       highline (= 1.5.2)
       multi_json (~> 1.10.1)
+    connection_pool (2.1.0)
+    css_parser (1.3.5)
+      addressable
     daemons (1.1.9)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -101,6 +107,7 @@ GEM
     hike (1.2.3)
     hirb (0.7.3)
     hiredis (0.6.0)
+    htmlentities (4.3.2)
     i18n (0.7.0)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
@@ -126,7 +133,15 @@ GEM
       unicorn
       whenever
     pg (0.18.1)
+    premailer (1.8.2)
+      css_parser (>= 1.3.5)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.8.0)
+      actionmailer (>= 3, < 5)
+      premailer (~> 1.7, >= 1.7.9)
     rack (1.6.0)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -159,6 +174,8 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redis (3.2.1)
+    redis-namespace (1.5.1)
+      redis (~> 3.0, >= 3.0.4)
     redis-session-store (0.8.0)
       actionpack (>= 3, < 5)
       redis
@@ -172,11 +189,21 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    sidekiq (3.2.6)
+      celluloid (= 0.15.2)
+      connection_pool (>= 2.0.0)
+      json
+      redis (>= 3.0.6)
+      redis-namespace (>= 1.3.1)
     simple-navigation (3.14.0)
       activesupport (>= 2.3.2)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -192,6 +219,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timers (1.1.0)
     tusur_header (0.2.4)
       bootstrap-sass (~> 3.1.1)
       coffee-rails
@@ -226,10 +254,13 @@ DEPENDENCIES
   jquery-rails
   openteam-commons
   pg
+  premailer-rails
   rails (= 4.2.0)
   redis-session-store
   sass-rails (~> 5.0)
+  sidekiq (~> 3.2.5)
   simple-navigation
   simple_form
+  sinatra (>= 1.3.0)
   tusur_header
   uglifier (>= 1.3.0)
