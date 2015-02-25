@@ -1,5 +1,3 @@
-require 'message_searcher'
-
 class MessagesController < ApplicationController
   def index
     @messages = MessageSearcher.new(params).results
