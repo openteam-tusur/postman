@@ -1,7 +1,11 @@
-<div class="search">
-<%= form_tag messages_path, :method => :get do %>
-    <%= search_field_tag :q, params[:q] %>
-    <%= submit_tag 'Искать' %>
+<div class="search-form">
+  <%= form_tag messages_path, :method => :get, :class => 'form-inline' do %>
+    <div class="search-input col-sm-11 form-group">
+      <%= search_field_tag :q, params[:q], :placeholder => 'Поиск по email', :class => 'form-control search' %>
+    </div>
+    <div class="action col-sm-1">
+      <%= submit_tag "Поиск", :class => 'btn btn-primary btn-sm btn-block' %>
+    </div>
   <% end %>
 </div>
 
