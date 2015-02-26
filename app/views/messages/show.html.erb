@@ -6,13 +6,13 @@
       <%= link_to 'Письмо', '#info', :data => { :toggle => :tab }, :role => :tab %>
     </li>
 
-    <% Contact.status.values.each do |status| %>
+    <% Contact.status_kinds.each do |status, title| %>
       <% contacts = @message.contacts.send(status) %>
 
       <% if contacts.any? %>
         <li role="presentation">
           <%= link_to "##{status}", :data => { :toggle => :tab }, :role => :tab do %>
-            <%= t("contact.status.#{status}") %>
+            <%= title %>
             <span class="badge badge-primary pull-right"><%= contacts.count %></span>
           <% end %>
         </li>

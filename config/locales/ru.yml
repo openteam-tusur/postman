@@ -15,12 +15,6 @@ ru:
     sms_property:
       index: Настройка sms
 
-  contact:
-    status:
-      good: Хороший
-      bad: Плохой
-      unknown: Неизвестный
-
   enumerize:
     contact:
       status:

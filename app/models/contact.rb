@@ -15,4 +15,8 @@ class Contact < ActiveRecord::Base
   self.status.values.each do |value|
     scope value.to_sym, -> { where(:status => value) }
   end
+
+  def self.status_kinds
+    status.values.map { |v| [v.to_s, v.text] }
+  end
 end
