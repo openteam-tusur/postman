@@ -5,6 +5,9 @@ ru:
     messages: Ничего не найдено
 
   page_title:
+    contacts:
+      show: Просмотр контакта
+
     main_page:
       index: Главная
 
