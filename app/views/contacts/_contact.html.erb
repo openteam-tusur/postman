@@ -1,8 +1,8 @@
-<li class="list-item <%= cycle( "odd", "even" ) %>">
+<li class="list-item message <%= cycle( "odd", "even" ) %>">
   <span class="contact <%= contact.status %>">
     <%= link_to contact.value, contact_path(contact) %>
   </span>
-  <span class="message pull-right <%= delivery_status(@message, contact) %>">
+  <span class="status pull-right <%= delivery_status(@message, contact) %>">
     <%= @message.delivery_status_text_for(contact) %>
   </span>
 </li>

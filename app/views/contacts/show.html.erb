@@ -5,8 +5,16 @@
 <div class="messages list">
   <ul>
     <% @contact.messages.each do |message| %>
-      <li class="list-item <%= cycle( "odd", "even" ) %>">
+      <li class="list-item message <%= cycle( "odd", "even" ) %>">
+        <span class="date">
+          <%= l message.created_at %>
+        </span>
+
         <%= link_to message.subject, message_path(message) %>
+
+        <span class="status pull-right <%= delivery_status(message, @contact) %>">
+          <%= message.delivery_status_text_for(@contact) %>
+        </span>
       </li>
     <% end %>
   </ul>
