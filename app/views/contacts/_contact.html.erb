@@ -2,9 +2,7 @@
   <span class="contact <%= contact.status %>">
     <%= contact.value %>
   </span>
-  <% if contact.good? || contact.unknown? %>
-    <span class="message pull-right <%= delivery_status(@message, contact) %>">
-      <%= @message.delivery_status_text_for(contact) %>
-    </span>
-  <% end %>
+  <span class="message pull-right <%= delivery_status(@message, contact) %>">
+    <%= @message.delivery_status_text_for(contact) %>
+  </span>
 </li>
