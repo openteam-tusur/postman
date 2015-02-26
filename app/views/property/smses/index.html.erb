@@ -1,10 +1,18 @@
+<h3>Настройка шаблона SMS</h3>
+
 <div class="sms_properties list">
-  <%= link_to "Добавить настройку", new_property_sms_path %>
   <ul>
     <% @property_smses.each do |property| %>
-      <%= link_to property.title, property_sms_path(property) %>
-      <%= link_to "Редактировать", edit_property_sms_path(property) %>
-      <%= link_to "Удалить", property_sms_path(property), :method => :delete, :data => { :confirm => 'Вы уверены?' } %>
+      <li class="list-item <%= cycle( "odd", "even" ) %>">
+        <%= link_to property.title, property_sms_path(property) %>
+
+        <span class="actions pull-right">
+          <%= link_to "Редактировать", edit_property_sms_path(property) %>
+          <%= link_to "Удалить", property_sms_path(property), :method => :delete, :data => { :confirm => 'Вы уверены?' } %>
+        </span>
+      </li>
     <% end %>
   </ul>
+
+  <%= link_to "Добавить настройку", new_property_sms_path, :class => 'btn btn-primary btn-sm'%>
 </div>

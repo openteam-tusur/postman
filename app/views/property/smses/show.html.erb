@@ -1,11 +1,12 @@
-<%= link_to "Назад к списку", property_smses_path %>
-<div class='property_sms'>
-  <div>
-    <h2>Название</h2>
-    <%= @property_sms.title %>
-  </div>
-  <div>
-    <h2>Slug</h2>
-    <%= @property_sms.slug %>
-  </div>
+<h3><%= @property_sms.title %></h3>
+
+<div class="property">
+  <ul>
+    <li>
+      <strong>Slug:</strong>
+      <%= @property_sms.slug %>
+    </li>
+  </ul>
 </div>
+
+<%= link_to "Назад к списку", property_smses_path, :class => 'btn btn-default btn-sm' %>
