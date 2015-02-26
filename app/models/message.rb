@@ -2,6 +2,8 @@ class Message < ActiveRecord::Base
   has_many :contact_messages, :dependent => :destroy
   has_many :contacts, :through => :contact_messages
 
+  belongs_to :property
+
   scope :ordered, -> { order('created_at') }
 
   normalize_attributes :subject, :body
