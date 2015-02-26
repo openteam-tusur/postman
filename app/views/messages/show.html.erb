@@ -23,7 +23,7 @@
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane fade in active" id="info">
-    <%= @message.body %>
+    <%= render 'preview' %>
   </div>
 
   <% Contact.status.values.each do |status| %>

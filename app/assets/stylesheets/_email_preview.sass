@@ -1,0 +1,67 @@
+#email-preview
+  background: #f1f1f1
+  margin: 0 auto
+  padding: 20px
+  width: 100%
+
+  .email-wrapper
+    border: 1px solid #fff
+    width: 600px
+    margin: 0 auto
+
+    #header
+      background: #005bae image_url('logo_w.png') no-repeat 20px 0
+      height: 53px
+
+      .title
+        color: #fff
+        float: right
+        margin: 16px
+
+        &:hover
+          text-decoration: none
+
+    #content
+      +clearfix
+      background: #fff
+      color: #222
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+      font-size: 16px
+      padding: 20px
+
+      h3
+        font-size: 20px
+        text-align: center
+        margin: 0 0 20px 0
+
+      a
+        color: #005bae
+
+      p
+        line-height: 24px
+
+      ul
+        list-style-type: none
+
+        li
+          line-height: 24px
+
+    #footer
+      +clearfix
+      background: #f2f2f2
+      color: #555555
+      font-size: 12px
+      line-height: 18px
+      padding: 10px
+      text-align: center
+
+      .info, .contacts
+        float: left
+        width: 50%
+
+      p
+        margin: 0
+        line-height: 20px
+
+      a
+        color: #005bae
