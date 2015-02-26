@@ -9,6 +9,12 @@ ru:
     messages:
       index: Список сообщений
 
+    email_property:
+      index: Настройка email
+
+    sms_property:
+      index: Настройка sms
+
   contact:
     status:
       good: Хороший
