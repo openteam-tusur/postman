@@ -1,0 +1,13 @@
+<h3>
+  <span class="contact <%= @contact.status %>"><%= @contact %></span>
+</h3>
+
+<div class="messages list">
+  <ul>
+    <% @contact.messages.each do |message| %>
+      <li class="list-item <%= cycle( "odd", "even" ) %>">
+        <%= link_to message.subject, message_path(message) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

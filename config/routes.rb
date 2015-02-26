@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   mount Api => '/'
 
   resources :messages, :only => [:index, :show]
+
+  resources :contacts, :only => :show
+
   namespace :property do
     resources :emails
     resources :smses
   end
+
   root :to => 'application#index'
 end
