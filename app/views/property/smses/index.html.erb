@@ -1,0 +1,10 @@
+<div class="sms_properties list">
+  <%= link_to "Добавить настройку", new_property_sms_path %>
+  <ul>
+    <% @property_smses.each do |property| %>
+      <%= link_to property.title, property_sms_path(property) %>
+      <%= link_to "Редактировать", edit_property_sms_path(property) %>
+      <%= link_to "Удалить", property_sms_path(property), :method => :delete, :data => { :confirm => 'Вы уверены?' } %>
+    <% end %>
+  </ul>
+</div>

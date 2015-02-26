@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :messages, :only => [:index, :show]
   namespace :property do
     resources :emails
-    resources :sms
+    resources :smses
   end
   root :to => 'application#index'
 end
