@@ -1,13 +1,42 @@
-<div class='message'>
+<div class="row">
   <h3><%= @message.subject %></h3>
-  <div class="message_body">
-    <%= @message.body %>
-  </div>
 </div>
 
-<div class="message_contacts">
-  <% Contact.status.values.each do |status| %>
-    <% contacts = @message.contacts.send(status) %>
-    <%= render :partial => 'contacts/list', :locals => {:contacts => contacts, :status => status} if contacts.any? %>
-  <% end %>
+<div class="row">
+  <div class="tab-sidebar">
+    <ul class="nav">
+      <li role="presentation" class="active">
+        <%= link_to 'Письмо', '#info', :data => { :toggle => :tab }, :role => :tab %>
+      </li>
+
+      <% Contact.status.values.each do |status| %>
+        <% contacts = @message.contacts.send(status) %>
+
+        <% if contacts.any? %>
+          <li role="presentation">
+            <%= link_to "##{status}", :data => { :toggle => :tab }, :role => :tab do %>
+              <%= t("contact.status.#{status}") %>
+              <span class="badge badge-primary pull-right"><%= contacts.count %></span>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="info">
+      <%= @message.body %>
+    </div>
+
+    <% Contact.status.values.each do |status| %>
+      <% contacts = @message.contacts.send(status) %>
+
+      <% if contacts.any? %>
+        <div role="tabpanel" class="tab-pane fade in" id="<%= status %>">
+          <%= render :partial => 'contacts/list', :locals => {:contacts => contacts, :status => status} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

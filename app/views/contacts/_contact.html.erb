@@ -1,6 +1,10 @@
-<li>
-  <%= contact.value %>
+<li class="list-item <%= cycle( "odd", "even" ) %>">
+  <span class="contact <%= contact.status %>">
+    <%= contact.value %>
+  </span>
   <% if contact.good? || contact.unknown? %>
-    <span class='message_status'><%= @message.delivery_status_text_for(contact) %></span>
+    <span class="message pull-right <%= delivery_status(@message, contact) %>">
+      <%= @message.delivery_status_text_for(contact) %>
+    </span>
   <% end %>
 </li>
