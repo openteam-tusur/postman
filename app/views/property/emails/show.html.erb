@@ -1,0 +1,15 @@
+<%= link_to "Назад к списку", property_emails_path %>
+<div class='property_email'>
+  <div>
+    <h2>Название</h2>
+    <%= @property_email.title %>
+  </div>
+  <div>
+    <h2>Ссылка</h2>
+    <%= link_to @property_email.url %>
+  </div>
+  <div>
+    <h2>Футер</h2>
+    <%= @property_email.footer %>
+  </div>
+</div>
