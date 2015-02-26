@@ -20,7 +20,7 @@
                       <%= image_tag(attachments['logo_w.png'].try(:url), :alt => 'ТУСУР') %>
                     </td>
                     <td>
-                      <%= link_to I18n.t('app.title'), root_url(:host => 'http://lvh.me:3000'), :target => :_blank %>
+                      <%= link_to @property.title, @property.url, :target => :_blank %>
                     </td>
                   </tr>
                 </tbody>
@@ -48,6 +48,7 @@
                     </td>
 
                     <td>
+                      <%= @property.footer.html_safe %>
                     </td>
                   </tr>
                 </tbody>
