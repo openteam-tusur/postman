@@ -17,3 +17,4 @@
 /data/*
 *.sql
 erd.pdf
+.ruby_version
