@@ -1,6 +1,7 @@
 <%= simple_form_for @property_email do |f| %>
   <%= f.input :title %>
   <%= f.input :url %>
+  <%= f.input :slug %>
   <%= f.input :footer %>
   <%= f.submit 'Сохранить' %>
   <%= link_to "Отмена", :back %>

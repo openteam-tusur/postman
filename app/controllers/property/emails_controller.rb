@@ -44,6 +44,6 @@ class Property::EmailsController < ApplicationController
   end
 
   def email_properties_params
-    params.require(:property_email).permit(:title, :url, :footer)
+    params.require(:property_email).permit(:title, :url, :footer, :slug)
   end
 end
