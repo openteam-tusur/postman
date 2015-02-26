@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Postman</title>
+    <title><%= document_title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -14,6 +14,12 @@
       <%= render 'navigation' %>
 
       <div class="container">
+        <% if content_for?(:page_title) %>
+          <%= yield(:page_title) %>
+        <% else %>
+          <h1><%= page_title %></h1>
+        <% end %>
+
         <%= yield %>
       </div>
     </div>

@@ -1,4 +1,6 @@
 ru:
+  site: Postman
+
   empty:
     messages: Ничего не найдено
 
@@ -8,12 +10,31 @@ ru:
 
     messages:
       index: Список сообщений
+      show:  Просмотр сообщения
 
-    email_property:
-      index: Настройка email
+    emails:
+      index:  Настройка шаблона E-mail
+      show:   Просмотр шаблона
+      create: Добавление нового шаблона
+      update: Редактирование шаблона
+      new:    Добавление нового шаблона
+      edit:   Редактирование шаблона
 
-    sms_property:
+    smses:
       index: Настройка sms
+      show:   Просмотр шаблона
+      create: Добавление нового шаблона
+      update: Редактирование шаблона
+      new:    Добавление нового шаблона
+      edit:   Редактирование шаблона
+
+  activerecord:
+    attributes:
+      property:
+        title:  Название
+        url:    Ссылка
+        slug:   Слаг
+        footer: Футер
 
   enumerize:
     contact:
