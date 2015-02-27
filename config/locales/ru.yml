@@ -46,9 +46,9 @@ ru:
   enumerize:
     contact:
       status:
-        good: Хороший
-        bad: Плохой
-        unknown: Неизвестный
+        good:    Хороший
+        bad:     Плохой
+        invalid: Невалидный
 
     contact_message:
       status:
