@@ -1,15 +1,18 @@
 ru:
+  cancan:
+    access_denied: Доступ запрещен!
+
   site: Postman
 
   empty:
     messages: Ничего не найдено
 
   page_title:
+    application:
+      index: Главная
+
     contacts:
       show: Просмотр контакта
-
-    main_page:
-      index: Главная
 
     messages:
       index: Список сообщений

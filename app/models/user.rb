@@ -5,4 +5,8 @@ class User
   def app_name
     Settings['app.host']
   end
+
+  def administrator?
+    permissions.where(:role => :administrator).any?
+  end
 end

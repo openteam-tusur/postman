@@ -4,6 +4,7 @@ group :default do
   gem 'attribute_normalizer'
   gem 'auth_client',                            :git => 'https://github.com/openteam-tusur/auth_client'
   gem 'auth_redis_user_connector',              :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
+  gem 'cancancan'
   gem 'coffee-rails',               '~> 4.1.0'
   gem 'enumerize'
   gem 'grape'
