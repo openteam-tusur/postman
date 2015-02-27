@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class MessagesController < AuthController
   def index
     @messages = MessageSearcher.new(params).results
   end

@@ -1,4 +1,4 @@
-class Property::EmailsController < ApplicationController
+class Property::EmailsController < AuthController
   before_filter :find_property_email, :only => [:show, :edit, :update, :destroy]
 
   def index

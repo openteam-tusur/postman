@@ -1,4 +1,4 @@
-class Property::SmsesController < ApplicationController
+class Property::SmsesController < AuthController
   before_filter :find_property_sms, :only => [:show, :edit, :update, :destroy]
 
   def index
