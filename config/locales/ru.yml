@@ -34,6 +34,7 @@ ru:
   activerecord:
     attributes:
       property:
+        email:  Адрес для отправки
         title:  Название
         url:    Ссылка
         slug:   Слаг

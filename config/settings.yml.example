@@ -2,7 +2,6 @@ app:
   secret:             secret
   host:               host
   url:                url
-  from:               user@host
 
 profile:
   url:                http://localhost:3001/
