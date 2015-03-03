@@ -11,6 +11,7 @@ group :default do
   gem 'gravtastic'
   gem 'jquery-rails'
   gem 'kaminari'
+  gem 'non-stupid-digest-assets'
   gem 'openteam-commons'
   gem 'pg'
   gem 'premailer-rails'
