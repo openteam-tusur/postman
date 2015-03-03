@@ -29,6 +29,7 @@ end
 
 group :development do
   gem 'capistrano',                 '~> 3.2.1'
+  gem 'capistrano-bundler',         '= 1.1.2'
   gem 'hirb'
   gem 'openteam-capistrano',        '~> 1.0.9'
 end
