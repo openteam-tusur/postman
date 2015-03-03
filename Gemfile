@@ -28,5 +28,6 @@ end
 
 group :development do
   gem 'hirb'
+  gem 'openteam-capistrano',        '~> 1.0.9'
   gem 'sinatra', :require => nil
 end
