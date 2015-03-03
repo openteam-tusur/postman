@@ -20,6 +20,7 @@ group :default do
   gem 'sidekiq'
   gem 'simple-navigation'
   gem 'simple_form'
+  gem 'sinatra',                    :require => nil
   gem 'sunspot_rails',              '~> 2.1.1'
   gem 'tusur_header'
   gem 'uglifier',                   '>= 1.3.0'
@@ -29,5 +30,4 @@ end
 group :development do
   gem 'hirb'
   gem 'openteam-capistrano',        '~> 1.0.9'
-  gem 'sinatra', :require => nil
 end
