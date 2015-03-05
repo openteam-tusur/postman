@@ -21,7 +21,7 @@ class Api < Grape::API
     params do
       requires :body,    :type => String
       requires :phones,  :type => Array
-      requires :slug,    :type => Array, :values => -> { Property::Sms.pluck(:slug).uniq }
+      requires :slug,    :type => String, :values => -> { Property::Sms.pluck(:slug).uniq }
     end
     post :sms do
       SmsWorker.perform_async params[:body], params[:phones], params[:slug]
