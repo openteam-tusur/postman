@@ -1,4 +1,7 @@
 ru:
+  app:
+    title: Postman
+
   cancan:
     access_denied: Доступ запрещен!
 
