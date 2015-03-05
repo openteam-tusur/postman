@@ -1,0 +1,10 @@
+production: &production
+  adapter: {{ database_adapter }}
+  database: {{ database_database }}
+  username: {{ database_username }}
+  password: {{ database_password }}
+  host: {{ database_host }}
+
+development:
+  <<: *production
+

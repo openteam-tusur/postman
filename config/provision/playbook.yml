@@ -1,0 +1,61 @@
+- hosts: postman
+
+  tasks:
+    - include_vars: vars/settings.yml
+    - include_vars: vars/database.yml
+
+    # nginx
+    - name: copy nginx config file
+      template: src=templates/nginx/nginx.conf dest=/etc/nginx/nginx.conf owner=root group=root mode=0644
+
+    - name: copy nginx vhost file
+      template: src=templates/nginx/default.conf dest=/etc/nginx/vhosts/{{ ansible_fqdn }}.conf owner=root group=root mode=0644
+
+    - service: name=nginx state=restarted
+
+    # unicorn
+    - stat: path=/etc/init.d/unicorn
+      register: unicorn
+
+    - name: create unicorn config directory
+      file: path=/etc/unicorn state=directory owner=root group=root mode=0644
+      when: unicorn.stat.exists
+
+    - name: copy unicorn config file
+      template: src=templates/unicorn/unicorn.conf dest=/etc/unicorn/{{ ansible_fqdn }}.conf owner=root group=root mode=0644
+      when: unicorn.stat.exists
+
+    - file: path=/etc/unicorn/default.conf state=absent
+
+    - name: copy unicorn startup file
+      template: src=templates/unicorn/unicorn dest=/etc/init.d/unicorn owner=root group=root mode=0755
+      when: unicorn.stat.exists
+
+    # sidekiq
+    - stat: path=/etc/init.d/sidekiq
+      register: sidekiq
+
+    - name: create sidekiq config directory
+      file: path=/etc/sidekiq state=directory owner=root group=root mode=0644
+      when: sidekiq.stat.exists
+
+    - name: copy sidekiq config file
+      template: src=templates/sidekiq/sidekiq.conf dest=/etc/sidekiq/{{ ansible_fqdn }}.conf owner=root group=root mode=0644
+      when: sidekiq.stat.exists
+
+    - name: copy sidekiq startup file
+      template: src=templates/sidekiq/sidekiq dest=/etc/init.d/sidekiq owner=root group=root mode=0755
+      when: sidekiq.stat.exists
+
+    # auth-subscriber
+    - name: copy subsciber script
+      template: src=templates/subscriber/subscriber dest=/etc/init.d/subsciber owner=root group=root mode=0755
+
+    # settings
+    - name: copy settings
+      template: src=templates/config/settings.yml dest=/srv/{{ ansible_fqdn }}/shared/config/settings.yml
+
+    # database
+    - name: copy database config
+      template: src=templates/config/database.yml dest=/srv/{{ ansible_fqdn }}/shared/config/database.yml
+

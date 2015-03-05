@@ -1,0 +1,45 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:           subscriber
+# Required-Start:     $local_fs $network $time
+# Required-Stop:      $local_fs $network $time
+# Default-Start:      2 3 4 5
+# Default-Stop:       0 1 6
+# Short-Description:  subscriber
+### END INIT INFO
+
+APP_USER="rvmuser"
+APP_NAME="{{ ansible_fqdn }}"
+APP_ROOT="/srv/$APP_NAME/current"
+PID="${APP_ROOT}/tmp/pids/subscriber.pid"
+CMD="cd ${APP_ROOT} && RAILS_ENV=production bundle exec rake subscriber"
+
+sig () {
+  test -s "$PID" && kill -$1 `cat $PID`
+}
+
+case ${1-help} in
+
+start)
+  sig 0 && echo >&2 "Already running" && exit 0
+  su - $APP_USER -c "$CMD:start"
+;;
+
+stop)
+  su - $APP_USER -c "$CMD:stop" && exit 0
+  echo >&2 "Not running"
+;;
+
+restart)
+  su - $APP_USER -c "$CMD:restart" && exit 0
+  echo >&2 "Couldn't restart"
+;;
+
+*)
+
+echo >&2 "Usage: $0 <start|stop|restart>"
+exit 1
+;;
+esac
+
