@@ -14,7 +14,7 @@ redis:
 
 session_store:
   db:                   {{ settings_session_store_db }}
-  key_prefix:           {{ settings_session_store_key_prefix }}
+  key_prefix:           '{{ settings_session_store_key_prefix }}'
   host:                 {{ settings_session_store_host }}
   port:                 {{ settings_session_store_port }}
 
