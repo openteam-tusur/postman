@@ -9,6 +9,6 @@ class MessageMailer < CommonMailer
 
     headers['X-MC-Metadata'] = { 'contact_message_id' => contact_message.id }.to_json
 
-    mail(:from => msg.property.email, :to => recipient, :subject => @subject)
+    mail(:from => msg.property.email, :to => recipient.value, :subject => @subject)
   end
 end
