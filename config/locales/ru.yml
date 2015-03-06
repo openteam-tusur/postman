@@ -60,3 +60,11 @@ ru:
         received:    Принято
         delivered:   Доставлено
         failed:      Не доставлено
+
+  views:
+    pagination:
+      next:     '&gt;'
+      previous: '&lt;'
+      truncate: ...
+      first:    '&lt;&lt;'
+      last:     '&gt;&gt;'
