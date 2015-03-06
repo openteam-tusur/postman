@@ -4,7 +4,7 @@ class Contact < ActiveRecord::Base
   enumerize :status, :in => [:good, :bad, :invalid], :default => :good, :predicates => true
 
   has_many :contact_messages, :dependent => :destroy
-  has_many :messages, :through => :contact_messages
+  has_many :messages, -> { order 'created_at desc' }, :through => :contact_messages
 
   normalize_attributes :value
 
