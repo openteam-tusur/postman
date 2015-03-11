@@ -22,6 +22,7 @@ group :default do
   gem 'simple-navigation'
   gem 'simple_form'
   gem 'sinatra',                    :require => nil
+  gem 'smsru',                      :require => 'sms_ru'
   gem 'sunspot_rails',              '~> 2.1.1'
   gem 'tusur_header'
   gem 'uglifier',                   '>= 1.3.0'
