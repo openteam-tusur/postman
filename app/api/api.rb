@@ -6,7 +6,7 @@ class Api < Grape::API
     'pong'
   end
 
-  namespace ":send" do
+  namespace :send do
     params do
       requires :body,    :type => String
       requires :subject, :type => String
@@ -26,6 +26,21 @@ class Api < Grape::API
     post :sms do
       SmsWorker.perform_async params[:body], params[:phones], params[:slug]
       'Message received'
+    end
+  end
+
+  namespace :webhooks do
+    get :ping do
+      'pong'
+    end
+
+    params do
+      requires :token,   :type => String, :values => [Settings['webhooks.sms.token']]
+    end
+    post :sms do
+      puts params[:data]
+      SmsWebhook.new(params[:data]).perform
+      '100'
     end
   end
 end
