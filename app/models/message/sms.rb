@@ -12,8 +12,9 @@ class Message::Sms < Message
     else
       recipients.each do |recipient|
         begin
-          #TODO remove :test key on production
-          response = SmsRu.sms.send(:text => self.body, :to => recipient.value, :from => 'TUSUR', :test => 1)
+          options = { :text => self.body, :to => recipient.value, :from => 'TUSUR' }
+          options.merge! :test => 1 if Rails.env.development?
+          response = SmsRu.sms.send options
           contact_message = self.contact_messages.find(recipient.contact_message_id).tap do |cm|
             cm.update_attribute(:status, :sended)
           end
