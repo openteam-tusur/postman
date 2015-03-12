@@ -7,14 +7,16 @@ class MandrillWebhook
   end
 
   def perform
-    case @event
+    if @contact_message
+      case @event
 
-    when 'send'
-      @contact_message.update_attributes!(:raw_email_status => @mandrill_response, :status => :received)
-    when 'hard_bounce' || 'soft_bounce' || 'spam' || 'reject'
-      @contact_message.update_attributes!(:raw_email_status => @mandrill_response, :status => :failed)
-    when 'open' || 'click'
-      @contact_message.update_attributes!(:raw_email_status => @mandrill_response, :status => :delivered)
+      when 'send'
+        @contact_message.update_attributes!(:raw_email_status => @mandrill_response, :status => :received)
+      when 'hard_bounce' || 'soft_bounce' || 'spam' || 'reject'
+        @contact_message.update_attributes!(:raw_email_status => @mandrill_response, :status => :failed)
+      when 'open' || 'click'
+        @contact_message.update_attributes!(:raw_email_status => @mandrill_response, :status => :delivered)
+      end
     end
   end
 
