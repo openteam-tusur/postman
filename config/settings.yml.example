@@ -26,3 +26,10 @@ smtp:
 
 solr:
   url:                http://solr.url/cores/postman
+
+sms_ru:
+  app_id:             id
+
+webhooks:
+  sms:
+    token:            token
