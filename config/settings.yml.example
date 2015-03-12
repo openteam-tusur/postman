@@ -33,3 +33,6 @@ sms_ru:
 webhooks:
   sms:
     token:            token
+
+  mandrill:
+    token:            token
