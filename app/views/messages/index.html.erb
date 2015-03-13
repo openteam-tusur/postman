@@ -13,8 +13,12 @@
   <% if @messages.any? %>
     <ul>
       <% @messages.each do |message| %>
-        <li>
-          <%= link_to message.subject, message_path(message) %>
+        <li class="list-item <%= cycle( "odd", "even" ) %>">
+          <span class="date">
+            <%= l message.created_at %>
+          </span>
+
+          <%= render :partial => "messages/#{message.to_partial_path}", :locals => { :message => message } %>
         </li>
       <% end %>
     </ul>
