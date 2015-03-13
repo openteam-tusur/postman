@@ -5,7 +5,7 @@ class MessageMailer < CommonMailer
     @recipient = recipient
     @property  = msg.property
 
-    contact_message = Contact.find_by(:value => recipient.value).contact_messages.find_by(:message_id => msg.id)
+    contact_message = ContactMessage.find(recipient.contact_message_id)
 
     headers['X-MC-Metadata'] = { 'contact_message_id' => contact_message.id }.to_json
 
