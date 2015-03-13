@@ -11,7 +11,7 @@ class Api < Grape::API
       requires :body,    :type => String
       requires :subject, :type => String
       requires :emails,  :type => Array
-      requires :slug,    :type => Array, :values => -> { Property::Email.pluck(:slug).uniq }
+      requires :slug,    :type => String, :values => -> { Property::Email.pluck(:slug).uniq }
     end
     post :mail do
       MailWorker.perform_async params[:subject], params[:body], params[:emails], params[:slug]
