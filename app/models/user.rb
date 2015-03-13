@@ -3,7 +3,7 @@ class User
   include TusurHeader::MenuLinks
 
   def app_name
-    Settings['app.host']
+    Settings['app.name']
   end
 
   def administrator?
