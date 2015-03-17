@@ -14,7 +14,7 @@
         <li class='notification_icon'>
           <%= link_to "#{Settings['profile.url']}/notifications", :class => 'notifications', :title => 'Уведомления' do %>
             <span class='counter'><%= (current_user.respond_to?(:unreaded_notifications) && current_user.unreaded_notifications.to_i > 0) ? "+#{current_user.unreaded_notifications}" : '' %></span>
-            <%= image_tag image_url('mail.png'), :width => 16, :height => 16 %>
+            <%= image_tag image_path('mail.png'), :width => 16, :height => 16 %>
           <% end %>
         </li>
       <% rescue %>
