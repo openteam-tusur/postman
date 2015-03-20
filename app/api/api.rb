@@ -14,8 +14,11 @@ class Api < Grape::API
       requires :slug,    :type => String, :values => -> { Property::Email.pluck(:slug).uniq }
     end
     post :mail do
-      MailWorker.perform_async params[:subject], params[:body], params[:emails], params[:slug]
-      'Message received'
+      emails_with_uuid = params[:emails].inject({}) { |h, email| h[email] = SecureRandom.uuid; h }
+
+      MailWorker.perform_async params[:subject], params[:body], emails_with_uuid, params[:slug]
+
+      emails_with_uuid
     end
 
     params do
@@ -24,16 +27,15 @@ class Api < Grape::API
       requires :slug,    :type => String, :values => -> { Property::Sms.pluck(:slug).uniq }
     end
     post :sms do
-      SmsWorker.perform_async params[:body], params[:phones], params[:slug]
-      'Message received'
+      phones_with_uuid = params[:phones].inject({}) { |h, phone| h[phone] = SecureRandom.uuid; h }
+
+      SmsWorker.perform_async params[:body], phones_with_uuid, params[:slug]
+
+      phones_with_uuid
     end
   end
 
   namespace :webhooks do
-    get :ping do
-      'pong'
-    end
-
     params do
       requires :token,   :type => String, :values => [Settings['webhooks.sms.token']]
     end
@@ -60,10 +62,24 @@ class Api < Grape::API
     end
 
     params do
+      requires :mails, :type => Array
+    end
+    post :mails do
+      params[:mails].inject({}) { |h, mail_uid| h[mail_uid] = ContactMessage.find_by(:uuid => mail_uid).try(:status) || :unknown; h }
+    end
+
+    params do
       requires :phones, :type => Array
     end
     post :phones do
       params[:phones].inject({}) { |h, phone| h[phone] = Contact::Phone.find_by(:value => phone).try(:status) || :unknown; h }
+    end
+
+    params do
+      requires :smses, :type => Array
+    end
+    post :smses do
+      params[:smses].inject({}) { |h, sms_uid| h[sms_uid] = ContactMessage.find_by(:uuid => sms_uid).try(:status) || :unknown; h }
     end
   end
 end

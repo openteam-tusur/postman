@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317103602) do
+ActiveRecord::Schema.define(version: 20150320044452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150317103602) do
     t.datetime "updated_at",       null: false
     t.text     "raw_email_status"
     t.string   "remote_id"
+    t.string   "uuid"
   end
 
   add_index "contact_messages", ["contact_id"], name: "index_contact_messages_on_contact_id", using: :btree
