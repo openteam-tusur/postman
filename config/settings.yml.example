@@ -1,38 +1,40 @@
 app:
-  secret:             secret
-  host:               host
-  url:                url
+  domain:         .domain
+  host:           http://app.host/
+  secret:         SECRET
+  url:            http://app.url/
 
 profile:
-  url:                http://localhost:3001/
-  sign_in_url:        http://localhost:3001/users/sign_in
-  sign_out_url:       http://localhost:3001/users/sign_out
+  url:            http://profile.url/
+  sign_in_url:    http://profile.url/users/sign_in
+  sign_out_url:   http://profile.url/users/sign_out
 
 redis:
-  url:                redis://127.0.0.1:6379/1
+  url:            redis://redis.url:6379/3
 
 redis_user_connector:
-  url:                redis://127.0.0.1:6379/3
+  url:            redis://redis.url:6379/1
 
 session_store:
-  db:                 2
-  key_prefix:         'session:'
-  host:               'localhost'
-  port:               6379
+  db:             2
+  key_prefix:     'session:'
+  host:           redis_host
+  port:           6379
 
 smtp:
-  address:            127.0.0.1
-  port:               1025
+  address:        smtp_url
+  port:           smtp_port
 
 solr:
-  url:                http://solr.url/cores/postman
+  url:            http://solr.url/cores/postman
 
 sms_ru:
-  app_id:             id
+  app_id:         ID
 
 webhooks:
-  sms:
-    token:            token
-
   mandrill:
-    token:            token
+    token:        TOKEN
+
+  sms:
+    token:        TOKEN
+
