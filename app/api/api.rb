@@ -50,4 +50,20 @@ class Api < Grape::API
       MandrillWebhook.new(params[:mandrill_events]).perform
     end
   end
+
+  namespace :status do
+    params do
+      requires :emails, :type => Array
+    end
+    post :emails do
+      params[:emails].inject({}) { |h, email| h[email] = Contact::Email.find_by(:value => email).try(:status) || :unknown; h }
+    end
+
+    params do
+      requires :phones, :type => Array
+    end
+    post :phones do
+      params[:phones].inject({}) { |h, phone| h[phone] = Contact::Phone.find_by(:value => phone).try(:status) || :unknown; h }
+    end
+  end
 end
