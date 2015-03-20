@@ -4,7 +4,7 @@ class MessageSearcher < Struct.new(:params)
   end
 
   def per_page
-    @per_page ||= 10
+    @per_page ||= 30
   end
 
   def query
