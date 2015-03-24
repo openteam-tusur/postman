@@ -14,7 +14,7 @@ class Api < Grape::API
       requires :slug,    :type => String, :values => -> { Property::Email.pluck(:slug).uniq }
     end
     post :mail do
-      emails_with_uuid = params[:emails].inject({}) { |h, email| h[email] = SecureRandom.uuid if email.presence; h }
+      emails_with_uuid = params[:emails].inject({}) { |h, email| h[email.downcase] = SecureRandom.uuid if email.presence; h }
 
       MailWorker.perform_async params[:subject], params[:body], emails_with_uuid, params[:slug]
 
@@ -58,7 +58,7 @@ class Api < Grape::API
       requires :emails, :type => Array
     end
     post :emails do
-      params[:emails].inject({}) { |h, email| h[email] = Contact::Email.find_by(:value => email).try(:status) || :unknown; h }
+      params[:emails].inject({}) { |h, email| h[email] = Contact::Email.find_by(:value => email.downcase).try(:status) || :unknown; h }
     end
 
     params do
