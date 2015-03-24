@@ -15,6 +15,7 @@ group :default do
   gem 'openteam-commons'
   gem 'pg'
   gem 'premailer-rails'
+  gem 'russian'
   gem 'rails',                      '4.2.0'
   gem 'redis-session-store'
   gem 'sass-rails',                 '~> 5.0'

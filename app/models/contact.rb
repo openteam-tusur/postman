@@ -6,7 +6,11 @@ class Contact < ActiveRecord::Base
   has_many :contact_messages, :dependent => :destroy
   has_many :messages, -> { order 'created_at desc' }, :through => :contact_messages
 
-  normalize_attributes :value
+  normalize_attributes :value, :with => [:strip, :blank] do |value|
+    value.present? && value.is_a?(String) ? value.downcase : value
+  end
+
+  validates_uniqueness_of :value
 
   alias_attribute :to_s, :value
 
