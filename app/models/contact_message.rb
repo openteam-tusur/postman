@@ -8,6 +8,10 @@ class ContactMessage < ActiveRecord::Base
 
   after_commit :set_contact_status
 
+  def good?
+    %w(received delivered).include? status
+  end
+
   private
 
   def set_contact_status

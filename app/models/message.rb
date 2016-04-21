@@ -12,6 +12,8 @@ class Message < ActiveRecord::Base
     text :subject
     text :contacts, :using => :contacts_values
     string :created_at
+    text :body, boost: 2.0
+    text(:status_text) { contacts.map(&:status_text).uniq.join(' ') }
   end
 
   def contacts_values

@@ -3,3 +3,6 @@
 <%= link_to "#{message.property.title}:", message.property.url %>
 
 <%= link_to message.subject, message_path(message) %>
+
+<%= message_contacts_status(message)  %>
+

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :messages, :only => [:index, :show]
 
-  resources :contacts, :only => :show
+  resources :contacts, :only => :show do
+    get 'rehabilitate'
+  end
 
   namespace :property do
     resources :emails

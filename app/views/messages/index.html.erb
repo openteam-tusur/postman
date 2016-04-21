@@ -14,11 +14,14 @@
     <ul>
       <% @messages.each do |message| %>
         <li class="list-item <%= cycle( "odd", "even" ) %>">
-          <span class="date">
-            <%= l message.created_at %>
-          </span>
-
-          <%= render :partial => "messages/#{message.to_partial_path}", :locals => { :message => message } %>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <span class="date">
+              <%= l message.created_at %>
+            </span>
+            <%= render :partial => "messages/#{message.to_partial_path}", :locals => { :message => message } %>
+          </div>
+        </div>
         </li>
       <% end %>
     </ul>

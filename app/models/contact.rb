@@ -16,11 +16,17 @@ class Contact < ActiveRecord::Base
 
   before_save :validate_value
 
+  after_update :reindex_messages
+
   self.status.values.each do |value|
     scope value.to_sym, -> { where(:status => value) }
   end
 
   def self.status_kinds
     status.values.map { |v| [v.to_s, v.text] }
+  end
+
+  def reindex_messages
+    messages.index
   end
 end

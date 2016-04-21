@@ -1,8 +1,19 @@
 <li class="list-item message <%= cycle( "odd", "even" ) %>">
-  <span class="contact <%= contact.status %>">
-    <%= link_to contact.value, contact_path(contact) %>
-  </span>
-  <span class="status pull-right <%= delivery_status(@message, contact) %>">
-    <%= @message.delivery_status_text_for(contact) %>
-  </span>
+<span class="contact <%= contact.status %>">
+  <%= link_to contact.value, contact_path(contact) %>
+</span>
+
+
+<span class="status pull-right <%= delivery_status(@message, contact) %>">
+  <%= @message.delivery_status_text_for(contact) %>
+</span>
+
+<% unless contact.status == 'good' %>
+  <div class='pull-right'>
+    <%= link_to 'Реабилитировать', contact_rehabilitate_path(contact), class: 'btn btn-sm btn-primary' %>
+    <span class=''>&nbsp;</span>
+    <span class=''>&nbsp;</span>
+    <span class=''>&nbsp;</span>
+  </div>
+<% end %>
 </li>
