@@ -16,7 +16,7 @@ class Contact < ActiveRecord::Base
 
   before_save :validate_value
 
-  after_update :reindex_messages
+  after_update :reindex_messages, if: :status_changed?
 
   self.status.values.each do |value|
     scope value.to_sym, -> { where(:status => value) }
