@@ -32,7 +32,7 @@ sms_ru:
   app_id:         ID
 
 webhooks:
-  mandrill:
+  sparkpost:
     token:        TOKEN
 
   sms:

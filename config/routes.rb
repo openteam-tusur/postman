@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resources :smses
   end
 
+  post '/api/webhooks/sparkpost' => 'webhooks#catch_hook'
+
   root :to => 'application#index'
 end
