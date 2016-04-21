@@ -44,6 +44,14 @@ class Api < Grape::API
       SmsWebhook.new(params[:data]).perform
       '100'
     end
+
+    params do
+      requires :token, :type => String, :values => [Settings['webhooks.mandrill.token']]
+    end
+
+    post :mandrill do
+      MandrillWebhook.new(params[:mandrill_events]).perform
+    end
   end
 
   namespace :status do
