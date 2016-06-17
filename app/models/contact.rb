@@ -27,6 +27,6 @@ class Contact < ActiveRecord::Base
   end
 
   def reindex_messages
-    messages.index
+    messages.map { |message| message.delay.index }
   end
 end
