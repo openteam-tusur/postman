@@ -1,53 +1,31 @@
-<% content_for :tusur_header_second_menu do %>
-  <ul class='nav navbar-nav hidden-sm'>
-    <li class='dropdown'>
-      <a href='/' class='dropdown-toggle has_arrow' data-toggle='dropdown'>Postman<b class='caret'></b></a>
-      <%= render_navigation :renderer => :first_renderer, :level => 1 %>
-    </li>
-  </ul>
-<% end %>
-
-<% content_for :tusur_header_auth_block do %>
-  <ul class='nav navbar-nav navbar-right auth_block'>
-    <% if current_user %>
-      <% begin %>
-        <li class='notification_icon'>
-          <%= link_to "#{Settings['profile.url']}/notifications", :class => 'notifications', :title => 'Уведомления' do %>
-            <span class='counter'><%= (current_user.respond_to?(:unreaded_notifications) && current_user.unreaded_notifications.to_i > 0) ? "+#{current_user.unreaded_notifications}" : '' %></span>
-            <%= image_tag image_path('mail.png'), :width => 16, :height => 16 %>
-          <% end %>
-        </li>
-      <% rescue %>
-      <% end %>
-      <li class="dropdown">
-        <div class="dropdown-toggle login" data-toggle='dropdown'>
-          <span class='current_user truncated'>
-            <%= image_tag current_user.avatar_url, :width => 24, :height => 24 %><%= current_user.short_name %>
-            <b class='caret'></b>
-          </span>
+<%= content_for :tusur_cdn_header_subtop do %>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+        <div class='logotype'>
+          <div class='image-wrapper'>
+            <%= link_to '/', class: 'image' do %>
+              <%= image_tag 'logotype.png', class: 'img-responsive' %>
+            <% end %>
+          </div>
+          <div class='hidden-xs site-name-wrapper'>
+            <%= link_to I18n.t('app.title'), '/', class: 'site-name' %>
+          </div>
         </div>
-        <%= current_user.menu_list %>
-      </li>
-    <% else %>
-      <li class='sign_in'>
-        <%= link_to 'Вход', sign_in_url %>
-      </li>
-    <% end %>
-  </ul>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<% content_for :tusur_header_second_menu_left do %>
-  <%= render_navigation :renderer => :second_renderer, :expand_all => true %>
-<% end %>
-
-<% content_for :tusur_header_mobile_menu_block do %>
-  <ul class='nav navbar-nav'>
-    <%= render_navigation :renderer => :mobile_menu_renderer, :level => 1 %>
-
-    <li class='sign_in'>
-      <%= link_to 'Вход', sign_in_url %>
-    </li>
-  </ul>
+<% content_for :tusur_cdn_header_menu do %>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <span class='tusur-cdn-header-menu-toggler visible-xs'>&#9776;</span>
+        <%= render_navigation renderer: :second_renderer, expand_all: true %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <%= render :partial => 'tusur_header/tusur_header' %>
