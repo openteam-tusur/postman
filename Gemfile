@@ -11,12 +11,12 @@ gem 'gravtastic'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'non-stupid-digest-assets'
-gem 'openteam-commons'
+gem 'openteam-commons', '~> 0.3.3'
 gem 'pg'
 gem 'premailer-rails'
-gem 'russian'
 gem 'rails', '~> 4.2.0'
 gem 'redis-session-store'
+gem 'russian'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'simple-navigation'
@@ -29,8 +29,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'validates_email_format_of'
 
 group :development do
-  gem 'capistrano', '~> 3.2.1'
-  gem 'capistrano-bundler', '= 1.1.2'
+  gem 'capistrano-auth-subscriber'
   gem 'hirb'
-  gem 'openteam-capistrano', '~> 1.0.9'
+  gem 'openteam-capistrano', '~> 1.0.16'
+end
+
+group :production do
+  gem 'unicorn'
 end
