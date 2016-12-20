@@ -99,8 +99,6 @@ GEM
       sidekiq
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
-    celluloid (0.16.0)
-      timers (~> 4.0.0)
     chronic (0.10.2)
     chunky_png (1.3.8)
     coercible (1.0.0)
@@ -132,7 +130,7 @@ GEM
     configliere (0.4.22)
       highline (= 1.5.2)
       multi_json (~> 1.10.1)
-    connection_pool (2.1.1)
+    connection_pool (2.2.1)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     css_parser (1.3.6)
@@ -165,7 +163,6 @@ GEM
     highline (1.5.2)
     hirb (0.7.3)
     hiredis (0.6.1)
-    hitimes (1.2.2)
     htmlentities (4.3.1)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -262,8 +259,6 @@ GEM
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redis (3.3.2)
-    redis-namespace (1.5.1)
-      redis (~> 3.0, >= 3.0.4)
     redis-session-store (0.8.0)
       actionpack (>= 3, < 5)
       redis
@@ -283,12 +278,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sidekiq (3.3.2)
-      celluloid (>= 0.16.0)
-      connection_pool (>= 2.1.1)
-      json
-      redis (>= 3.0.6)
-      redis-namespace (>= 1.3.1)
+    sidekiq (4.2.7)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
     simple-navigation (3.14.0)
       activesupport (>= 2.3.2)
     simple_form (3.1.0)
@@ -327,8 +321,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    timers (4.0.1)
-      hitimes
     tusur_cdn (0.1.1)
       activesupport
       configliere
