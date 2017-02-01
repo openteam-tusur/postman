@@ -23,7 +23,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'simple-navigation'
 gem 'simple_form'
-gem 'sinatra', require: nil
 gem 'smsru', require: 'sms_ru'
 gem 'sunspot_rails', '~> 2.1.1'
 gem 'tusur_header'
@@ -32,6 +31,7 @@ gem 'validates_email_format_of'
 
 group :development do
   gem 'capistrano-auth-subscriber'
+  gem 'capistrano-db-tasks', '0.4', require: false
   gem 'hirb'
   gem 'openteam-capistrano', '~> 1.0.16'
 end
