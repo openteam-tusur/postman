@@ -48,7 +48,12 @@
                     </td>
 
                     <td>
-                      <%= @property.footer.html_safe %>
+                      <% if @property.slug == 'abiturient' %>
+                        <% redis = Redis.new url: Settings['redis.url'] %>
+                        <%= (redis.get('onir_contacts').presence || I18n.t('onir_default_contacts')).to_s.html_safe %>
+                      <% else %>
+                        <%= @property.footer.html_safe %>
+                      <% end %>
                     </td>
                   </tr>
                 </tbody>

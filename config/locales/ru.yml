@@ -2,6 +2,30 @@ ru:
   app:
     title: Postman
 
+  onir_default_contacts: |
+    <p><b>Приёмная комиссия</b></p>
+    <p>
+      <span class='glyphicon glyphicon-map-marker'></span>
+      634050, г. Томск, пр. Ленина, 40
+    </p>
+    <p>
+      <span class='glyphicon glyphicon-phone'></span>
+      8-800-775-9025 (звонок по России бесплатный)
+    </p>
+    <p>
+      <span class='glyphicon glyphicon-phone-alt'></span>
+      телефон и факс
+      +7 (382-2) 900-100
+    </p>
+    <p>
+      <span class='glyphicon glyphicon-envelope'></span>
+      <a href='mailto:onir@main.tusur.ru'>onir@main.tusur.ru</a>
+    </p>
+    <p>
+      <span class='glyphicon glyphicon-time'></span>
+      Пн. &ndash; пт. с 9:00 до 13:00 и с 14:00 до 18:00, сб. и вс. &ndash; выходной.
+    </p>
+
   cancan:
     access_denied: Доступ запрещен!
 
