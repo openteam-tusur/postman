@@ -1,7 +1,9 @@
 Sidekiq.configure_server do |config|
-  config.redis = { :url => Settings['redis.url'], :namespace => 'postman' }
+  config.redis = { url: Settings['redis.url'], namespace: 'postman' }
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = { :url => Settings['redis.url'], :namespace => 'postman' }
+  config.redis = { url: Settings['redis.url'], namespace: 'postman' }
 end
+
+Sidekiq::Extensions.enable_delay!
