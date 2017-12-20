@@ -27,7 +27,7 @@ class Contact < ActiveRecord::Base
   end
 
   def reindex_messages
-    messages.delay.reindex
+    messages.delay.index
   end
 end
 
