@@ -4,7 +4,7 @@ class FirstRenderer < SimpleNavigation::Renderer::Base
       ''
     else
       content = list_content(item_container)
-      content_tag(:ul, content, :class => 'dropdown-menu')
+      content_tag(:ul, content, class: 'dropdown-menu')
     end
   end
 

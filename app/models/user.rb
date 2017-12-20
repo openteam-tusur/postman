@@ -7,6 +7,6 @@ class User
   end
 
   def administrator?
-    permissions.where(:role => :administrator).any?
+    permissions.where(role: :administrator).any?
   end
 end

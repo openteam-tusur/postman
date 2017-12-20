@@ -20,12 +20,12 @@ class SecondRenderer < SimpleNavigation::Renderer::Base
     if skip_if_empty? && item_container.empty?
       ''
     else
-      content_tag(:ul, list_content, { :id => item_container.dom_id, :class => [item_container.dom_class, ul_class].flatten.compact.join(' ') })
+      content_tag(:ul, list_content, { id: item_container.dom_id, class: [item_container.dom_class, ul_class].flatten.compact.join(' ') })
     end
   end
 
   def render_sub_navigation_for(item)
-    item.sub_navigation.render(self.options.merge(:is_subnavigation => true))
+    item.sub_navigation.render(self.options.merge(is_subnavigation: true))
   end
 
   protected
@@ -39,7 +39,7 @@ class SecondRenderer < SimpleNavigation::Renderer::Base
   end
 
   def link_options_for(item)
-    special_options = {:method => item.method}.reject {|k, v| v.nil? }
+    special_options = {method: item.method}.reject {|k, v| v.nil? }
     link_options = item.html_options[:link] || {}
     opts = special_options.merge(link_options)
     opts[:class] = [link_options[:class], item.selected_class].flatten.compact.join(' ')

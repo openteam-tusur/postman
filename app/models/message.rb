@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
-  has_many :contact_messages, :dependent => :destroy
-  has_many :contacts, :through => :contact_messages
+  has_many :contact_messages, dependent: :destroy
+  has_many :contacts, through: :contact_messages
 
   belongs_to :property
 
@@ -10,7 +10,7 @@ class Message < ActiveRecord::Base
 
   searchable do
     text :subject
-    text :contacts, :using => :contacts_values
+    text :contacts, using: :contacts_values
     string :created_at
     text :body, boost: 2.0
     text(:status_text) { contacts.map(&:status_text).uniq.join(' ') }
@@ -21,7 +21,7 @@ class Message < ActiveRecord::Base
   end
 
   def delivery_status_text_for(contact)
-    contact_messages.find_by(:contact_id => contact.id).status_text
+    contact_messages.find_by(contact_id: contact.id).status_text
   end
 end
 

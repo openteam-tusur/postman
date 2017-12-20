@@ -12,14 +12,14 @@ class Message::Sms < Message
     else
       recipients.each do |recipient|
         begin
-          options = { :text => self.body, :to => recipient.value, :from => 'TUSUR' }
-          options.merge! :test => 1 if Rails.env.development?
+          options = { text: self.body, to: recipient.value, from: 'TUSUR' }
+          options.merge! test: 1 if Rails.env.development?
           response = SmsRu.sms.send options
           contact_message = self.contact_messages.find(recipient.contact_message_id).tap do |cm|
             cm.update_attribute(:status, :sended)
           end
 
-          contact_message.update_attributes(:status => :received, :remote_id => response[1]) if response
+          contact_message.update_attributes(status: :received, remote_id: response[1]) if response
         rescue
           next
         end

@@ -31,6 +31,7 @@ gem 'sunspot_rails'
 gem 'tusur_header'
 gem 'uglifier', '>= 1.3.0'
 gem 'validates_email_format_of'
+gem 'whenever', require: false
 
 group :development do
   gem 'capistrano-auth-subscriber'

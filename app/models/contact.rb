@@ -1,12 +1,12 @@
 class Contact < ActiveRecord::Base
   extend Enumerize
 
-  enumerize :status, :in => [:good, :bad, :invalid], :default => :good, :predicates => true
+  enumerize :status, in: [:good, :bad, :invalid], default: :good, predicates: true
 
-  has_many :contact_messages, :dependent => :destroy
-  has_many :messages, -> { order 'created_at desc' }, :through => :contact_messages
+  has_many :contact_messages, dependent: :destroy
+  has_many :messages, -> { order 'created_at desc' }, through: :contact_messages
 
-  normalize_attributes :value, :with => [:strip, :blank] do |value|
+  normalize_attributes :value, with: [:strip, :blank] do |value|
     value.present? && value.is_a?(String) ? value.downcase : value
   end
 
@@ -19,7 +19,7 @@ class Contact < ActiveRecord::Base
   after_update :reindex_messages, if: :status_changed?
 
   self.status.values.each do |value|
-    scope value.to_sym, -> { where(:status => value) }
+    scope value.to_sym, -> { where(status: value) }
   end
 
   def self.status_kinds
