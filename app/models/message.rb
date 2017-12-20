@@ -24,3 +24,16 @@ class Message < ActiveRecord::Base
     contact_messages.find_by(:contact_id => contact.id).status_text
   end
 end
+
+# == Schema Information
+#
+# Table name: messages
+#
+#  id          :integer          not null, primary key
+#  subject     :string
+#  body        :text
+#  type        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  property_id :integer
+#

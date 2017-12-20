@@ -22,3 +22,18 @@ class ContactMessage < ActiveRecord::Base
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: contact_messages
+#
+#  id               :integer          not null, primary key
+#  contact_id       :integer
+#  message_id       :integer
+#  status           :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  raw_email_status :text
+#  remote_id        :string
+#  uuid             :string
+#

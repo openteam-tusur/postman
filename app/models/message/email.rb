@@ -5,3 +5,16 @@ class Message::Email < Message
     recipients.each { |recipient| MessageMailer.delay.send_email(subject, body, recipient.value, recipient.contact_message_id, property) }
   end
 end
+
+# == Schema Information
+#
+# Table name: messages
+#
+#  id          :integer          not null, primary key
+#  subject     :string
+#  body        :text
+#  type        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  property_id :integer
+#
