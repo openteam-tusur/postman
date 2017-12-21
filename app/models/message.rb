@@ -8,7 +8,7 @@ class Message < ActiveRecord::Base
 
   normalize_attributes :subject, :body
 
-  searchable do
+  searchable include: [:contacts] do
     text :subject
     text :contacts, using: :contacts_values
     string :created_at

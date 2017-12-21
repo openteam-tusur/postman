@@ -27,7 +27,7 @@ class Contact < ActiveRecord::Base
   end
 
   def reindex_messages
-    messages.delay.index
+    ReindexMessagesWorker.perform_async(self.id)
   end
 end
 
