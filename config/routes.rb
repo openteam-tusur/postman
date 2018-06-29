@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   post '/api/webhooks/sparkpost' => 'webhooks#catch_hook'
+  post '/api/webhooks/mailgun' => 'webhooks#mailgun_webhook'
 
   root :to => 'application#index'
 end

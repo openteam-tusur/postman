@@ -7,7 +7,18 @@ class MessageMailer < ActionMailer::Base
     @body     = body
     @property = property
 
-    headers['X-MSYS-API'] = { options: { :contact_message_id => contact_message_id  }, metadata: { :contact_message_id => contact_message_id } }.to_json if contact_message_id
+    headers['X-MSYS-API'] = {
+      options: {
+        :contact_message_id => contact_message_id
+      },
+      metadata: {
+        :contact_message_id => contact_message_id
+      }
+    }.to_json if contact_message_id
+
+    headers['X-Mailgun-Variables'] = {
+      contact_message_id: contact_message_id
+    }.to_json if contact_message_id
 
     mail(:from => property.email, :to => recipient, :subject => subject)
   end
