@@ -35,18 +35,8 @@ module Postman
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_mailer.default_url_options = { host: Settings['app.host'] }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = Settings['smtp']
 
-    if Settings['smtp'].present?
-      config.action_mailer.delivery_method = :smtp
-      config.action_mailer.smtp_settings = Settings['smtp']
-    end
-
-    if Settings['mailgun'].present?
-      config.action_mailer.delivery_method = :mailgun
-      config.action_mailer.mailgun_settings = {
-        api_key: Settings['mailgun.api_key'],
-        domain: Settings['mailgun.domain']
-      }
-    end
   end
 end
