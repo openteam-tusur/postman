@@ -1,4 +1,4 @@
-class SparkPostWebhook
+class MailgunWebhook
   def initialize(hash)
     @hash = hash
     @contact_message = ContactMessage.find(hash['contact_message_id'])
