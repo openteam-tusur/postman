@@ -9,10 +9,10 @@ class MessageMailer < ActionMailer::Base
 
     headers['X-MSYS-API'] = {
       options: {
-        :contact_message_id => contact_message_id
+        contact_message_id: contact_message_id
       },
       metadata: {
-        :contact_message_id => contact_message_id
+        contact_message_id: contact_message_id
       }
     }.to_json if contact_message_id
 
@@ -20,10 +20,13 @@ class MessageMailer < ActionMailer::Base
       contact_message_id: contact_message_id
     }.to_json if contact_message_id
 
-    mail(:from => property.email, :to => recipient, :subject => subject)
+    mail(from: property.email, to: recipient, subject: subject)
   end
 
   def add_inline_attachment!
-    attachments.inline['logo_w.png'] = { :content => File.read(Rails.root.join('app/assets/images/logo_w.png')), :content_id => "<logo_w.png@#{Settings['app.host']}>" }
+    attachments.inline['logo_w.png'] = {
+      content: File.read(Rails.root.join('app/assets/images/logo_w.png')),
+      content_id: "<logo_w.png@#{Settings['app.host']}>"
+    }
   end
 end
