@@ -5,8 +5,9 @@ class MailgunWebhook
     @event = @hash['event']
     Rails.logger.info '='*100
     Rails.logger.info @hash
-    Rails.logger.info @contact_message_id
-    Rails.logger.info @contact_messagei.inspect
+    Rails.logger.info @hash.inspect
+    Rails.logger.info @contact_message
+    Rails.logger.info @contact_message.inspect
     Rails.logger.info @event
     Rails.logger.info '='*100
   end
