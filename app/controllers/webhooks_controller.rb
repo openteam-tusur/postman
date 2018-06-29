@@ -16,7 +16,7 @@ class WebhooksController < ActionController::Base
     signature = params['signature']
 
     if verify_mailgun(api_key, token, timestamp, signature)
-      MailgunWebhook.new(params.to_hash).perform
+      MailgunWebhook.new(params).perform
       render json: {
         status: 200,
         message: 'OK'
