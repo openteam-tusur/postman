@@ -1,7 +1,7 @@
 class MailgunWebhook
   def initialize(hash)
     @hash = hash
-    @contact_message = ContactMessage.find(hash['contact_message_id'])
+    @contact_message = ContactMessage.find(hash['contact_message_id']) rescue nil
     @event = hash['event']
   end
 
@@ -9,22 +9,22 @@ class MailgunWebhook
     return if @contact_message.blank? || @event.blank?
 
     case @event
-    when 'deliver'
+    when 'delivered'
       @contact_message.update_attributes!(
         raw_email_status: hash.serialized_hash,
         status: :received
       )
-    when 'open' || 'click'
+    when 'opened' || 'clicked'
       @contact_message.update_attributes!(
         raw_email_status: hash.serialized_hash,
         status: :delivered
       )
-    when 'bounce' || 'spam_complaint' || 'policy_rejection' || 'generation_failure' || 'generation_rejection'
+    when 'dropped' || 'bounced'
       @contact_message.update_attributes!(
         raw_email_status: hash.serialized_hash,
         status: :failed
       )
-    when 'spam' || 'unsubscribe'
+    when 'complained' || 'unsubscribed'
       @contact_message.update_attributes!(
         raw_email_status: hash.serialized_hash,
         status: :spam
