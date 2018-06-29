@@ -1,8 +1,8 @@
 class MailgunWebhook
   def initialize(hash)
     @hash = hash
-    @contact_message = ContactMessage.find(hash['contact_message_id']) rescue nil
-    @event = hash['event']
+    @contact_message = ContactMessage.find(@hash['contact_message_id']) rescue nil
+    @event = @hash['event']
     Rails.logger.info '='*100
     Rails.logger.info @hash
     Rails.logger.info @contact_message_id
