@@ -3,6 +3,10 @@ class MailgunWebhook
     @hash = hash
     @contact_message = ContactMessage.find(hash['contact_message_id']) rescue nil
     @event = hash['event']
+    Rails.logger.info @hash
+    Rails.logger.info @contact_message_id
+    Rails.logger.info @contact_messagei.inspect
+    Rails.logger.info @event
   end
 
   def perform
