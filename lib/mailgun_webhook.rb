@@ -11,22 +11,22 @@ class MailgunWebhook
     case @event
     when 'delivered'
       @contact_message.update_attributes!(
-        raw_email_status: @hash.to_json,
+        raw_email_status: @hash.to_json.try(:force_encoding,'utf-8'),
         status: :received
       )
     when 'opened' || 'clicked'
       @contact_message.update_attributes!(
-        raw_email_status: @hash.to_json,
+        raw_email_status: @hash.to_json.try(:force_encoding,'utf-8'),
         status: :delivered
       )
     when 'dropped' || 'bounced'
       @contact_message.update_attributes!(
-        raw_email_status: @hash.to_json,
+        raw_email_status: @hash.to_json.try(:force_encoding,'utf-8'),
         status: :failed
       )
     when 'complained' || 'unsubscribed'
       @contact_message.update_attributes!(
-        raw_email_status: @hash.to_json,
+        raw_email_status: @hash.to_json.try(:force_encoding,'utf-8'),
         status: :spam
       )
     end
