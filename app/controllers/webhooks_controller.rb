@@ -29,11 +29,27 @@ class WebhooksController < ActionController::Base
     end
   end
 
+  def aws_webhook
+    ap aws_hash
+    MailgunWebhook.new(params).perform
+    render nothing: true and return
+  end
+
   private
 
   def verify_mailgun(api_key, token, timestamp, signature)
     digest = OpenSSL::Digest::SHA256.new
     data = [timestamp, token].join
     signature == OpenSSL::HMAC.hexdigest(digest, api_key, data)
+  end
+
+  def aws_hash
+    @aws_hash ||= Hashie::Mash.new(
+      aws_json.transform_keys{ |key| key.underscore }
+    )
+  end
+
+  def aws_json
+    JSON.load(request.raw_post) rescue {}
   end
 end

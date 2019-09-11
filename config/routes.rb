@@ -16,8 +16,13 @@ Rails.application.routes.draw do
     resources :smses
   end
 
-  post '/api/webhooks/sparkpost' => 'webhooks#catch_hook'
-  post '/api/webhooks/mailgun' => 'webhooks#mailgun_webhook'
+  scope :api do
+    scope :webhooks do
+      post :sparkpost, to: 'webhooks#catch_hook', as: :api_webhooks_sparkpost
+      post :mailgun, to: 'webhooks#mailgun_webhook', as: :api_webhooks_mailgun
+      post :aws, to: 'webhooks#aws_webhook', as: :api_webhooks_aws
+    end
+  end
 
   root :to => 'application#index'
 end
