@@ -31,9 +31,7 @@ class WebhooksController < ActionController::Base
 
   def aws_webhook
     ap aws_hash
-    Rails.logger = Logger.new(STDOUT)
-    config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
-    Rails.logger.info aws_hash
+    logger.info aws_hash
     MailgunWebhook.new(params).perform
     render nothing: true and return
   end
