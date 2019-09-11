@@ -30,9 +30,12 @@ class WebhooksController < ActionController::Base
   end
 
   def aws_webhook
+    ap 'aws hash'
     ap aws_hash
-    logger.info aws_hash
-    MailgunWebhook.new(params).perform
+    logger.info 'aws hash'
+    logger.info aws_hash.to_hash
+    render nothing: true and return if aws_hash.blank?
+    AwsWebhook.new(aws_hash).perform
     render nothing: true and return
   end
 
@@ -51,6 +54,7 @@ class WebhooksController < ActionController::Base
   end
 
   def aws_json
+    ap request.raw_post
     JSON.load(request.raw_post) rescue {}
   end
 end
