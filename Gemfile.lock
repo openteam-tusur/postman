@@ -246,7 +246,7 @@ GEM
       highline (~> 1.6)
       options (~> 2.3.0)
     public_suffix (2.0.5)
-    rack (1.6.11)
+    rack (1.6.13)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-protection (2.0.1)
